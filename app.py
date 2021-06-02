@@ -1,14 +1,25 @@
-from typing import Optional
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
+from sqlalchemy.orm import Session
+
+from src.config.infra.database.sqlalchemy.connection import SessionLocal
+
+from src.domain.accounts.models.user_models import UserModel, CreateUserModel
+from src.domain.accounts.services.create_account_service import CreateAccountService
+from src.domain.accounts.repositories.user_repository import UserRepository
 
 app = FastAPI()
 
 
-@app.get('/')
-def read_root():
-    return {'hello': 'world'}
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 
-@app.get('/items/{item_id}')
-def read_ite(item_id: int, q: Optional[str] = None):
-    return {'item_id': item_id, 'q': q}
+@app.post("/users/", response_model=UserModel)
+def create_user(user: CreateUserModel, db: Session = Depends(get_db)):
+    repository = UserRepository(db)
+    service = CreateAccountService(repository=repository)
+    return service.create(user)
