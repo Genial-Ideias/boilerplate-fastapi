@@ -1,7 +1,5 @@
-from sqlalchemy.orm import Session
-
-from src.infra.sqlalchemy.entities.account import User
-from src.domain.accounts.models.user_models import CreateUserModel
+from src.infra.orm.entities.account import User
+from src.domain.accounts.models.user_models import CreateUserModel, UserModel
 
 
 class UserRepository:
@@ -17,5 +15,13 @@ class UserRepository:
         )
         self._db.add(db_user)
         self._db.commit()
-        self._db.refresh()
-        return db_user()
+        self._db.refresh(db_user)
+
+        user_model = UserModel(
+            id=db_user.id,
+            name=db_user.name,
+            email=db_user.email,
+            is_active=db_user.is_active
+        )
+
+        return user_model

@@ -6,7 +6,9 @@ class UserModel(BaseModel):
     id: str
     name: str
     email: str
-    password: str
+    is_active: bool
+
+    password: Optional[str]
 
 
 class CreateUserModel(BaseModel):
