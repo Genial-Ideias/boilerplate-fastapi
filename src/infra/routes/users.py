@@ -3,7 +3,7 @@ from dependency_injector.wiring import inject, Provide
 
 from src.config.containers import Container
 
-from src.domain.users.models.user_models import UserModel, CreateUserModel
+from src.domain.users.models.user_models import CreateUserModel
 from src.domain.users.services import (
     CreateUserService,
     ListUserService,
