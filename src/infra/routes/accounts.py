@@ -1,20 +1,9 @@
 from fastapi import APIRouter, Depends
-
 from sqlalchemy.orm import Session
-
-from src.config.database import SessionLocal
-
+from src.infra.di.database import get_db
 from src.domain.accounts.models.user_models import UserModel, CreateUserModel
 from src.domain.accounts.services.create_account_service import CreateAccountService
 from src.domain.accounts.repositories.user_repository import UserRepository
-
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 
 router = APIRouter(

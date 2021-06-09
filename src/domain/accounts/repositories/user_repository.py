@@ -1,9 +1,9 @@
+from sqlalchemy.orm import Session
 from src.infra.orm.entities.account import User
 from src.domain.accounts.models.user_models import CreateUserModel, UserModel
 
-
 class UserRepository:
-    def __init__(self, db):
+    def __init__(self, db: Session):
         self._db = db
 
     def create_user(self, user: CreateUserModel):

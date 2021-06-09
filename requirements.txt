@@ -8,7 +8,6 @@ greenlet==1.1.0
 h11==0.12.0
 Mako==1.1.4
 MarkupSafe==2.0.1
-psycopg2==2.8.6
 pycodestyle==2.7.0
 pydantic==1.8.2
 python-dateutil==2.8.1
