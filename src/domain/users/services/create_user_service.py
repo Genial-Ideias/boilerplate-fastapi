@@ -1,8 +1,8 @@
-from src.domain.accounts.models.user_models import CreateUserModel, UserModel
-from src.domain.accounts.repositories.user_repository import UserRepository
+from src.domain.users.models.user_models import CreateUserModel, UserModel
+from src.domain.users.repositories.user_repository import UserRepository
 
 
-class CreateAccountService:
+class CreateUserService:
 
     def __init__(self, repository: UserRepository):
         self._repository = repository

@@ -1,21 +1,20 @@
-import os
-from dotenv import load_dotenv
-
-load_dotenv(f"{os.getcwd()}/.env")
-
-import uvicorn
-
 from fastapi import FastAPI
-from src.infra.routes import accounts
+
+from src.config import routes, containers
 
 
-app = FastAPI()
-app.include_router(accounts.router)
+def create_app() -> FastAPI:
+    container = containers.init_app()
+    container.config.from_yaml('config.yml')
+    container.wire(modules=routes.get_routes())
 
-if __name__ == '__main__':
+    db = container.db()
+    db.create_database()
 
-    reload = True if os.environ.get('ENVIRONMENT', 'production') == 'development' else False
-    debug = os.environ.get('DEBUG', False)
-    host  = os.environ.get('HOST', "0.0.0.0")
-    port  = os.environ.get('PORT', 8000)
-    uvicorn.run("app:app", host="0.0.0.0", port=port, reload=reload, debug=debug)
+    app = FastAPI()
+    routes.init_app(app)
+    app.container = container
+    return app
+
+
+app = create_app()

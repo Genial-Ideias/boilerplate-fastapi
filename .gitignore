@@ -1,6 +1,8 @@
 venv
 .venv
 .vscode
+.idea
+.env
 *.sqlite3
 __pycache__
 *.pyc

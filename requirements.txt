@@ -2,6 +2,7 @@ alembic==1.6.5
 autopep8==1.5.7
 click==7.1.2
 colorama==0.4.4
+dependency-injector==4.32.3
 fastapi==0.65.1
 FastAPI-SQLAlchemy==0.2.1
 greenlet==1.1.0
@@ -14,7 +15,7 @@ python-dateutil==2.8.1
 python-dotenv==0.17.1
 python-editor==1.0.4
 PyYAML==5.4.1
-six==1.16.0
+six==1.15.0
 SQLAlchemy==1.4.15
 starlette==0.14.2
 toml==0.10.2
