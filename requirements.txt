@@ -1,6 +1,8 @@
 alembic==1.6.5
 attrs==21.2.0
 autopep8==1.5.7
+certifi==2021.5.30
+chardet==4.0.0
 click==7.1.2
 colorama==0.4.4
 dependency-injector==4.32.3
@@ -8,11 +10,13 @@ fastapi==0.65.1
 FastAPI-SQLAlchemy==0.2.1
 greenlet==1.1.0
 h11==0.12.0
+idna==2.10
 iniconfig==1.1.1
 Mako==1.1.4
 MarkupSafe==2.0.1
 packaging==20.9
 pluggy==0.13.1
+psycopg2-binary==2.8.6
 py==1.10.0
 pycodestyle==2.7.0
 pydantic==1.8.2
@@ -22,11 +26,13 @@ python-dateutil==2.8.1
 python-dotenv==0.17.1
 python-editor==1.0.4
 PyYAML==5.4.1
+requests==2.25.1
 six==1.15.0
 SQLAlchemy==1.4.15
 starlette==0.14.2
 toml==0.10.2
 typing-extensions==3.10.0.0
+urllib3==1.26.5
 uvicorn==0.13.4
 watchgod==0.7
 websockets==8.1
