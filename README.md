@@ -4,13 +4,13 @@
 
 ### Instalação
 - Clonar projeto:
--- ```git clone https://github.com/Genial-Ideias/boilerplate-fastapi.git```
+    - ```git clone https://github.com/Genial-Ideias/boilerplate-fastapi.git```
 
 - Criar ambiente virtual
--- ```python -m venv venv```
+    - ```python -m venv venv```
 
 -  Com ambiente virtual ativado, instalar dependências:
--- ```pip install -r requirements.txt```
+    - ```pip install -r requirements.txt```
 
 - Criar arquivo .env baseado no ```.env.example```
     ```text
@@ -20,11 +20,11 @@
     ```
 
 - rodar projeto:
--- ```python runserver.py```
+    - ```python runserver.py```
 
 - rodar testes:
--- ```pytest```
+    - ```pytest```
 
 - rodar coverage:
--- ```coverage run -m pytest```
--- ```coverage html```
+    - ```coverage run -m pytest```
+    - ```coverage html```
