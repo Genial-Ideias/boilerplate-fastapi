@@ -8,7 +8,7 @@ class Env:
         env_path = os.getcwd()
         self._config = {
             **dotenv_values(f'{env_path}/.env'),
-            **os.environ,
+            **os.environ
         }
 
     @property
@@ -23,4 +23,4 @@ class Env:
         return self._config[key] if key in self._config else default
 
 
-environment = Env()
+environment: Env = Env()
