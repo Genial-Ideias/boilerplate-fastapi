@@ -7,3 +7,6 @@ venv
 __pycache__
 *.pyc
 store.db
+test.db
+htmlcov
+.coverage

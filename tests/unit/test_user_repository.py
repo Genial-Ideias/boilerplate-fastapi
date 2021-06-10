@@ -1,8 +1,9 @@
 from src.domain.users.repositories.user_repository import UserRepository
 from src.domain.users.models.user_models import CreateUserModel
 
+
 def test_create_user(app):
-    
+
     db = app.container.db()
 
     model = CreateUserModel(
@@ -17,8 +18,3 @@ def test_create_user(app):
     assert model.name == user.name
     assert model.email == user.email
     assert model.password == user.password
-    
-
-
-
-
