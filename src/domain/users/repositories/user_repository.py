@@ -1,5 +1,4 @@
-from contextlib import AbstractContextManager
-from typing import Callable, Iterator
+from typing import Callable, ContextManager, Iterator
 from sqlalchemy.orm import Session
 
 from src.infra.orm.entities.user import User
@@ -7,7 +6,7 @@ from src.domain.users.models.user_models import CreateUserModel, UserModel
 
 
 class UserRepository:
-    def __init__(self, session_factory: Callable[..., AbstractContextManager[Session]]) -> None:
+    def __init__(self, session_factory):
         self.session_factory = session_factory
 
     def create_user(self, create_user_model: CreateUserModel) -> UserModel:

@@ -1,6 +1,5 @@
-from dataclasses import dataclass
-from contextlib import contextmanager, AbstractContextManager
-from typing import Callable
+from contextlib import contextmanager
+from typing import Callable, ContextManager
 import logging
 
 from sqlalchemy import create_engine, orm
@@ -12,11 +11,11 @@ logger = logging.getLogger(__name__)
 Base = declarative_base()
 
 
-@dataclass
 class Database:
 
-    def __init__(self, db_url: str) -> None:
-        self._engine = create_engine(db_url, echo=True)
+    def __init__(self, db_url: str):
+        self._engine = create_engine(db_url, connect_args={
+            "check_same_thread": False})
         self._session_factory = orm.scoped_session(
             orm.sessionmaker(
                 autocommit=False,
@@ -25,17 +24,16 @@ class Database:
             ),
         )
 
-    def create_database(self) -> None:
+    def create_database(self):
         Base.metadata.create_all(self._engine)
 
     @contextmanager
-    def session(self) -> Callable[..., AbstractContextManager[Session]]:
+    def session(self):
         session: Session = self._session_factory()
         try:
             yield session
         except Exception:
             logger.exception('Session rollback because of exception')
             session.rollback()
-            raise
         finally:
             session.close()
