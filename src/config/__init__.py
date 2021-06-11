@@ -1,4 +1,4 @@
-from src.config import containers, routes
+from src.config import containers, routes, cli
 from src.config.env import environment
 
 __all__ = [
