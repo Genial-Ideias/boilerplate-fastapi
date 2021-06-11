@@ -3,7 +3,7 @@ from pydantic import BaseModel
 
 
 class UserModel(BaseModel):
-    id: str
+    id: int
     name: str
     email: str
     is_active: bool
